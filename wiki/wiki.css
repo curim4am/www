@@ -1,0 +1,118 @@
+/* Ukázka vzhledu DokuWiki (šablona „dokuwiki“) v barvách webu SVJ Buková */
+:root{
+  --ink:#1d2f4f; --link:#2b5797; --link-v:#1d2f4f; --text:#2a2f37; --muted:#666e7a;
+  --bg:#fbfaf7; --page:#fff; --line:#d9d4ca; --line-2:#ece8e0; --th:#f1ece3; --accent:#9a5530;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 var(--sans)}
+a{color:var(--link);text-decoration:none}
+a:hover,a:focus{text-decoration:underline}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.a11y{position:absolute;left:-9999px}
+
+.demo-bar{background:var(--accent);color:#fff;text-align:center;font-size:12.5px;padding:6px 12px;letter-spacing:.02em}
+
+#dokuwiki__site{max-width:1180px;margin:0 auto;padding:0 16px}
+.pad{padding:0}
+
+/* ---- hlavička ---- */
+#dokuwiki__header{padding:22px 0 10px}
+#dokuwiki__header .pad.group{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px}
+.headings h1{margin:0;font-size:1.45em;font-weight:600;line-height:1.2}
+.headings h1 a{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.logo{width:44px;height:44px;flex:none;padding:8px;border-radius:10px;background:var(--ink);color:#fff;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.claim{margin:4px 0 0 56px;color:var(--muted);font-size:.9em}
+.tools{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.tools ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;font-size:.88em}
+#dokuwiki__usertools a{color:var(--muted)}
+#dokuwiki__usertools .login a::before{content:"🔒";font-size:.85em;margin-right:5px;filter:grayscale(1)}
+#dokuwiki__sitetools{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.search{display:flex}
+.search input{width:220px;font:inherit;font-size:.9em;padding:6px 10px;border:1px solid var(--line);border-right:0;border-radius:4px 0 0 4px;background:#fff;color:var(--text)}
+.search button{border:1px solid var(--line);background:#f4f1eb;border-radius:0 4px 4px 0;padding:0 9px;cursor:pointer;color:var(--muted)}
+.search button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;display:block}
+
+.breadcrumbs{flex-basis:100%;margin-top:14px;border-top:1px solid var(--line-2);border-bottom:1px solid #fff;font-size:.82em;padding:6px 2px;color:var(--muted);background:linear-gradient(#fff,transparent)}
+.breadcrumbs .bchead{font-weight:600}
+.breadcrumbs .curid{font-weight:600;color:var(--text)}
+
+/* ---- rozvržení ---- */
+.wrapper{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+@media(min-width:900px){
+  .wrapper{grid-template-columns:220px minmax(0,1fr) 44px;gap:22px}
+}
+
+/* postranní panel */
+#dokuwiki__aside{font-size:.9em}
+#dokuwiki__aside .toggle{font-size:.78em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:6px 0 10px;font-weight:700}
+#dokuwiki__aside p{margin:16px 0 4px;font-size:.85em;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+#dokuwiki__aside p strong{font-weight:700}
+#dokuwiki__aside ul{list-style:none;margin:0;padding:0}
+#dokuwiki__aside li .li{padding:4px 0 4px 10px;border-left:2px solid var(--line-2)}
+#dokuwiki__aside li .li:hover{border-left-color:var(--ink)}
+@media(max-width:899px){
+  #dokuwiki__aside{order:2;background:#fff;border:1px solid var(--line);border-radius:4px;padding:6px 14px 14px}
+}
+
+/* obsah stránky */
+#dokuwiki__content .pad{background:var(--page);border:1px solid var(--line);border-radius:3px;padding:28px 32px 18px;box-shadow:0 0 .5em rgba(0,0,0,.06);position:relative}
+@media(max-width:600px){#dokuwiki__content .pad{padding:20px 16px 14px}}
+.pageId{position:absolute;top:-1px;right:-1px;transform:translateY(-100%)}
+.pageId span{display:block;font-size:.75em;color:var(--muted);background:var(--page);border:1px solid var(--line);border-bottom:0;border-radius:3px 3px 0 0;padding:1px 8px}
+.page{overflow-wrap:break-word}
+.page h1{font-size:2em;font-weight:500;color:var(--ink);margin:0 0 .6em;line-height:1.2}
+.page h2{font-size:1.45em;font-weight:500;color:var(--ink);margin:1.4em 0 .5em;padding-bottom:.2em;border-bottom:1px solid var(--line-2)}
+.page h3{font-size:1.2em;font-weight:600;color:var(--ink);margin:1.2em 0 .4em}
+.page h4{font-size:1.05em;font-weight:600;margin:1em 0 .3em}
+.page p{margin:0 0 1em}
+.page ul,.page ol{margin:0 0 1em;padding-left:1.6em}
+.page li{margin:.15em 0}
+.page li .li{display:inline}
+.page ul li::marker{color:var(--accent)}
+.page blockquote{margin:0 0 1.2em;padding:.6em 1em;border-left:4px solid var(--accent);background:#fbf3ec;border-radius:0 4px 4px 0}
+.page blockquote .no{margin:0}
+.page em{color:var(--muted)}
+a.urlextern{padding-right:14px;background:no-repeat right center/10px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 2h6v6M10 2 3 9' fill='none' stroke='%232b5797' stroke-width='1.6'/%3E%3C/svg%3E")}
+a.wikilink1{color:#2a7a3a}
+a.wikilink1:visited{color:#21612e}
+.fixme{display:inline-block;font-size:.78em;padding:0 6px;border-radius:3px;background:#fff3c4;color:#6b5600;border:1px solid #ecd987}
+
+.table{overflow-x:auto;margin:0 0 1.2em}
+table.inline{border-collapse:collapse;min-width:60%;font-size:.94em}
+table.inline th,table.inline td{border:1px solid var(--line);padding:.45em .7em;vertical-align:top;text-align:left}
+table.inline th{background:var(--th);font-weight:600;color:var(--ink)}
+table.inline tr:nth-child(even) td{background:#fcfbf8}
+
+.docInfo{margin-top:24px;padding-top:8px;border-top:1px solid var(--line-2);font-size:.78em;color:var(--muted);text-align:right}
+
+/* nástroje stránky vpravo */
+#dokuwiki__pagetools .tools ul{flex-direction:column;gap:2px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:4px}
+#dokuwiki__pagetools a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;color:var(--muted);border-radius:3px}
+#dokuwiki__pagetools a:hover{background:#f4f1eb;color:var(--ink);text-decoration:none}
+#dokuwiki__pagetools svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#dokuwiki__pagetools span{position:absolute;left:-9999px}
+@media(min-width:900px){#dokuwiki__pagetools{position:sticky;top:16px}}
+@media(max-width:899px){#dokuwiki__pagetools{display:none}}
+
+#dokuwiki__footer{margin:24px 0 32px;text-align:center;font-size:.82em;color:var(--muted)}
+#dokuwiki__footer p{margin:.3em 0}
+
+/* přihlášení */
+.login-box{max-width:380px}
+.login-box label{display:block;font-size:.9em;margin:12px 0 4px;color:var(--muted)}
+.login-box input[type=text],.login-box input[type=password]{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:4px}
+.login-box .chk{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:.9em}
+.login-box button{margin-top:16px;font:inherit;font-weight:600;padding:8px 18px;border:0;border-radius:4px;background:var(--ink);color:#fff;cursor:pointer}
+.headings{display:block!important}
+@media(max-width:700px){
+  .tools,#dokuwiki__sitetools{align-items:stretch;width:100%}
+  #dokuwiki__usertools ul{justify-content:flex-end}
+  .search input{width:100%;flex:1}
+  .claim{margin-left:0}
+}
+/* přístupnost: odkazy v textu jsou rozpoznatelné i bez barvy */
+.page a,#dokuwiki__footer a{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+#dokuwiki__aside .toggle{font-size:.78em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:6px 0 10px;font-weight:700}
+a.mediafile{padding-left:18px;background:no-repeat left center/13px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a5530' stroke-width='2'%3E%3Cpath d='M6 3h9l4 4v14H6z'/%3E%3Cpath d='M14 3v5h5'/%3E%3C/svg%3E")}

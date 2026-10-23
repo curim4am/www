@@ -1,0 +1,218 @@
+/* SVJ Buková – verze D (sjednocená typografie, rozestupy a detaily)
+   Jednotný systém: barvy, typografická škála, rozestupy a komponenty jsou definované v :root. */
+:root{
+  /* barvy */
+  --ink:#1d2f4f;            /* noční modrá – nadpisy, odkazy, hlavní dlaždice */
+  --text:#1e2530;           /* hlavní text */
+  --text-2:#3c4350;         /* běžný sekundární text (popisy, příběh) */
+  --muted:#5d6572;          /* popisky, meta údaje (AA i na písková pozadí) */
+  --on-ink:#ffffff; --on-ink-2:#d6deea; --on-ink-3:#aebbd0;
+  --paper:#fbfaf7; --card:#ffffff; --sand:#f1ece3;
+  --line:#e6e2da; --line-sand:#ddd3c3;
+  --accent:#9a5530;         /* cihlová – jen drobné akcenty (iniciála, štítky) */
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  /* typografická škála */
+  --fs-label:.75rem;   /* VERZÁLKOVÉ ŠTÍTKY */
+  --fs-meta:.8125rem;  /* drobné poznámky, zdroje */
+  --fs-small:.9375rem; /* popisy v kartách, údaje */
+  --fs-body:1rem;
+  --fs-read:1.03rem;  /* delší čtený text */
+  --fs-title:1.0625rem;/* názvy karet */
+  --fs-name:1.25rem;   /* jména (serif) */
+  /* rozestupy a tvary */
+  --gap:12px; --sec:44px; --pad:20px; --radius:14px;
+  --shadow:0 8px 24px rgba(29,47,79,.14);
+}
+@media(min-width:760px){:root{--gap:14px;--sec:60px;--pad:28px}}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--text);line-height:1.55;font-size:16px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Jednotné prvky ---------- */
+/* všechny verzálkové štítky mají stejnou velikost, proklad i řez */
+.eyebrow,.sec-h,.album-label{font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;font-weight:700;line-height:1.3}
+.sec-h{color:var(--muted);margin-bottom:16px}
+.eyebrow,.album-label{color:var(--accent)}
+/* textové odkazy – jeden styl podtržení */
+.src-link,.note-link,a.contact,.foot-link,.f-name{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;
+  text-underline-offset:3px;text-decoration-color:rgba(29,47,79,.35);transition:text-decoration-color .15s}
+.src-link:hover,.note-link:hover,a.contact:hover,.foot-link:hover,.f-name:hover{text-decoration-color:currentColor}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+/* boxy */
+.box-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+
+/* ---------- Úvod ---------- */
+.hero{background:linear-gradient(180deg,#f4efe6 0%,var(--paper) 100%);border-bottom:1px solid var(--line)}
+.hero-in{display:grid;grid-template-columns:1fr;gap:8px;align-items:end;padding-top:44px}
+.hero h1{font-family:var(--serif);font-weight:500;color:var(--ink);font-size:clamp(1.9rem,10.4vw,2.6rem);line-height:1.05;margin-top:10px;letter-spacing:-.01em;white-space:nowrap}
+.hero h1 .amp{font-variant-numeric:lining-nums}
+.lead{font-size:1.08rem;color:var(--text-2);margin-top:14px;max-width:36ch}
+.facts{list-style:none;display:flex;gap:28px;margin:26px 0 6px}
+.facts li{display:flex;flex-direction:column}
+.facts b{font-family:var(--serif);font-weight:500;font-size:1.7rem;color:var(--ink);line-height:1}
+.facts span{font-size:var(--fs-meta);color:var(--muted);margin-top:5px}
+.house{margin:10px -6px 0;max-width:440px;justify-self:center;width:100%}
+.house svg{display:block;width:100%;height:auto}
+.house .body{fill:#b7aa95}
+.house .ris{fill:#b7aa95}
+.house .plinth{fill:#b39a8c}
+.house .cornice{fill:#eee8dc}
+.house .roof{fill:#4b4540}
+.house .pipe{fill:#8a7f73}
+.house .vent{fill:#6f665c}
+.house .wf{fill:#fbfaf7}
+.house .wg{fill:#d7e1e6}
+.house .wm{stroke:#fbfaf7;stroke-width:1.4}
+.house .sill{fill:#f2eee6}
+.house .slab{fill:#ddd5c6}
+.house .rail{fill:none;stroke:#2d3138;stroke-width:1}
+.house .railv{stroke:#2d3138;stroke-width:.6}
+.house .portal{fill:#d9cdb8}
+.house .door{fill:#b56a32}
+.house .doorl{stroke:#8a4c20;stroke-width:1}
+.house .dglass{fill:#2b2a2a}
+.house .cellar{fill:#3e3a36}
+.house .canopy{fill:#5a534c}
+.house .garwall{fill:#a99a8c}
+.house .gdoor{fill:#e6e8ea;stroke:#a6a9ad;stroke-width:.8}
+.house .gline{stroke:#a6a9ad;stroke-width:1}
+.house .gline2{stroke:#c9ccd0;stroke-width:.8}
+.house .ramp{fill:#c9c2b8}
+.house .hill{fill:#a9b98a}
+.house .hilledge{fill:none;stroke:#93a676;stroke-width:1.2}
+.house .hand{fill:none;stroke:#8d9096;stroke-width:1.2}
+.house .street{fill:#d8d3cb}
+.house .grass{fill:#a9b98a}
+.house .bush circle{fill:#6f8c58}
+.house .hedge{fill:#6a8a52}
+.house .trunk{fill:#6b5a48}
+.house .branch{stroke:#6b5a48;stroke-width:3;fill:none;stroke-linecap:round}
+.house .lit{fill:#f3d98f}
+.house .curt{fill:#e9dcc4;stroke:#d6c6aa;stroke-width:.4}
+.house .veil{fill:#efe6d6;opacity:.9}
+.house .person{fill:#55606f}
+.house .box{fill:#8a5a3a}
+.house .fl{fill:#c8584b}
+.house .lf{fill:#6f8c58}
+.house .crown circle{fill:#5f7f4f}
+.house .crown2 circle{fill:#6f9160;opacity:.9}
+
+/* ---------- Sekce ---------- */
+.sec{padding-top:var(--sec)}
+
+/* ---------- Kam dál (dlaždice) ----------
+   Barvy dlaždice jsou v proměnných; tmavý stav jen proměnné přepíná. */
+.routes{display:grid;grid-template-columns:1fr;gap:var(--gap)}
+.route{--bg:var(--card);--bd:var(--line);--t:var(--ink);--d:var(--text-2);--m:var(--muted);--ic-bg:var(--sand);--ic:var(--ink);--sh:none;
+  display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:start;
+  background:var(--bg);border:1px solid var(--bd);border-radius:var(--radius);box-shadow:var(--sh);
+  padding:20px;text-decoration:none;color:var(--text);
+  transition:background-color .22s,border-color .22s,box-shadow .22s,transform .22s}
+.r-ic{display:flex;width:44px;height:44px;border-radius:12px;background:var(--ic-bg);color:var(--ic);align-items:center;justify-content:center;transition:background-color .22s,color .22s}
+.r-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.r-body{display:flex;flex-direction:column;height:100%}
+.r-t{font-weight:600;font-size:var(--fs-title);line-height:1.3;color:var(--t);transition:color .22s}
+.r-d{font-size:var(--fs-small);color:var(--d);margin-top:6px;line-height:1.45;transition:color .22s}
+.r-meta{font-size:var(--fs-meta);color:var(--m);margin-top:10px;transition:color .22s}
+.r-go{color:var(--t);font-size:1.2rem;line-height:1.4;transition:transform .22s,color .22s}
+/* zvýrazněný stav: eDomovník ve výchozím stavu, jiná dlaždice při najetí / fokusu / ťuknutí */
+.route.primary,.route:hover,.route:focus-visible,.route:active{
+  --bg:var(--ink);--bd:var(--ink);--t:var(--on-ink);--d:var(--on-ink-2);--m:var(--on-ink-3);--ic-bg:rgba(255,255,255,.12);--ic:#fff;--sh:var(--shadow)}
+.route:hover,.route:focus-visible{transform:translateY(-2px)}
+.route:hover .r-go,.route:focus-visible .r-go{transform:translateX(4px)}
+/* když je zvýrazněná jiná dlaždice, eDomovník se vrátí do světlé podoby */
+.routes:has(.route:not(.primary):is(:hover,:focus-visible,:active)) .route.primary{
+  --bg:var(--card);--bd:var(--line);--t:var(--ink);--d:var(--text-2);--m:var(--muted);--ic-bg:var(--sand);--ic:var(--ink);--sh:none;transform:none}
+/* dotyková zařízení: po ťuknutí nenechávat „přilepený“ hover */
+@media (hover:none){
+  .route:not(.primary):hover:not(:active){--bg:var(--card);--bd:var(--line);--t:var(--ink);--d:var(--text-2);--m:var(--muted);--ic-bg:var(--sand);--ic:var(--ink);--sh:none;transform:none}
+}
+
+/* ---------- Z historie domu ----------
+   Verze AA: příběh v jednom sloupci přes celou šířku boxu (bez sloupce „Lidé z našeho domu“).
+   Styly .album-people / .folks / .f-* zůstávají připravené pro případný návrat jmen (viz verze D). */
+.album{background:var(--sand);border-radius:var(--radius);padding:var(--pad);display:grid;grid-template-columns:1fr;row-gap:28px}
+.album-story p{font-size:var(--fs-body);color:var(--text-2);line-height:1.65}
+.album-story p+p{margin-top:10px}
+.album-story p:first-child::first-letter{float:left;font-family:var(--serif);font-weight:500;color:var(--accent);
+  font-size:3.3em;line-height:.82;margin:.08em .1em 0 0;padding-right:2px}
+.album-story p.album-src{font-size:var(--fs-meta);color:var(--muted);line-height:1.55;margin-top:16px}
+.album-label{margin-bottom:6px}
+.album-intro{font-size:var(--fs-meta);color:var(--muted);line-height:1.55;margin:2px 0 10px;max-width:42ch}
+.folks{list-style:none}
+.folks li{display:flex;flex-direction:column;padding:16px 0;border-top:1px solid var(--line-sand)}
+.folks li:first-child{border-top:0;padding-top:6px}
+.f-name{align-self:flex-start;font-family:var(--serif);font-size:var(--fs-name);line-height:1.3;text-underline-offset:4px;padding:2px 0}
+.f-tit{font-size:.8em}
+.f-arr{font-family:var(--sans);font-size:.7em;color:var(--muted)}
+.f-role{font-size:.9rem;color:var(--text-2);margin-top:4px;line-height:1.4;font-weight:600}
+.f-bio{font-size:.9rem;color:var(--text-2);margin-top:6px;line-height:1.5}
+.f-src{font-size:var(--fs-meta);color:var(--muted);margin-top:6px}
+
+/* ---------- Údaje o SVJ + kontakt ---------- */
+.duo{display:grid;grid-template-columns:1fr;gap:var(--gap)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:var(--pad) var(--pad) calc(var(--pad) - 8px)}
+.rows > div{display:grid;grid-template-columns:1fr;gap:2px;padding:12px 0;border-bottom:1px solid var(--line)}
+.rows > div:first-child{padding-top:0}
+.rows > div:last-child{border-bottom:0}
+.rows dt{font-size:var(--fs-meta);color:var(--muted)}
+.rows dd{font-size:var(--fs-body);color:var(--text)}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:var(--sand);padding:2px 8px;border-radius:6px}
+a.contact{font-weight:600}
+a.contact,.foot-link{display:inline-block;padding:12px 0;margin:-12px 0}
+.note{color:var(--muted);font-size:var(--fs-meta);line-height:1.55;margin-top:4px;padding-top:12px;border-top:1px solid var(--line)}
+#kontakt{scroll-margin-top:24px}
+
+/* ---------- Patička ---------- */
+.foot{margin-top:var(--sec);border-top:1px solid var(--line);background:#f6f3ed}
+.foot-in{display:flex;flex-direction:column;gap:10px;padding-top:20px;padding-bottom:28px;font-size:var(--fs-meta);color:var(--muted)}
+.foot-link{color:var(--muted);align-self:flex-start;text-decoration-style:dotted}
+.foot-link:hover{color:var(--ink)}
+
+/* ---------- Větší obrazovky ---------- */
+@media(min-width:760px){
+  .hero-in{grid-template-columns:1.05fr .95fr;gap:24px;padding-top:64px}
+  .hero-txt{padding-bottom:46px}
+  .hero h1{font-size:clamp(2.2rem,5.3vw,3.4rem)}
+  .house{margin:0;justify-self:end}
+  .routes{grid-template-columns:1.25fr 1fr 1fr}
+  .route{grid-template-columns:1fr auto;grid-template-rows:auto 1fr;gap:0 16px;padding:22px}
+  .r-ic{grid-column:1;grid-row:1;margin-bottom:12px}
+  .r-go{grid-column:2;grid-row:1}
+  .r-body{grid-column:1 / -1;grid-row:2}
+  .r-meta{margin-top:auto;padding-top:10px}
+  .album{padding:38px 56px 34px}
+  .album-people{border-left:1px solid var(--line-sand);padding-left:32px;margin-left:-10px}
+  .album-label{margin-top:4px}
+  .album-story p{font-size:1.0625rem;line-height:1.7}
+  .album-story p.album-src{font-size:var(--fs-meta)}
+  .folks li{padding:13px 0}
+  .f-name{font-size:1.28rem}
+  .duo{grid-template-columns:1.3fr 1fr;align-items:stretch}
+  .rows > div{grid-template-columns:132px 1fr;gap:16px;align-items:baseline}
+  .foot-in{flex-direction:row;justify-content:space-between;align-items:center}
+  .foot-link{align-self:auto}
+}
+@media(max-width:360px){
+  .route{grid-template-columns:1fr auto;padding:18px 16px}
+  .r-ic{grid-column:1;grid-row:1;margin-bottom:12px}
+  .r-go{grid-column:2;grid-row:1}
+  .r-body{grid-column:1 / -1;grid-row:2}
+  .facts{gap:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{
+  .hero{background:none}
+  .house,.foot-link{display:none}
+  .route,.route.primary{--bg:#fff;--t:var(--text);--d:var(--text);--m:var(--text);--sh:none}
+}
+.src-link{white-space:nowrap}
+.src-mini{color:var(--muted);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(93,101,114,.4);white-space:nowrap;display:inline-block;padding:6px 0;margin:-6px 0}
+.src-mini:hover{color:var(--ink);text-decoration-color:currentColor}
+
+.route[href^="#"]:hover .r-go,.route[href^="#"]:focus-visible .r-go{transform:translateY(3px)}
