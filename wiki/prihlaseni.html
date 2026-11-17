@@ -46,13 +46,24 @@
       <div class="pageId"><span>vlastnici:start</span></div>
       <div class="page group">
 <h1>Přihlásit se</h1>
-<p>Přihlášení je jen pro členy výboru a pro vlastníky, kterým výbor založil účet. Veřejná část wiki se čte bez přihlášení.</p>
-<form class="login-box" onsubmit="alert('Toto je jen ukázka – přihlášení zde nefunguje.');return false">
-<label for="u">Uživatelské jméno</label><input id="u" type="text" autocomplete="off">
-<label for="p">Heslo</label><input id="p" type="password" autocomplete="off">
+<p>Přihlášení je jen pro členy výboru. Veřejná část wiki se čte bez přihlášení.</p>
+<blockquote><div class="no"><strong>Ukázka:</strong> zadejte jméno <strong>admin</strong> a heslo <strong>admin</strong> – otevře se demo <strong>interní wiki výboru</strong>.</div></blockquote>
+<form class="login-box" id="lf">
+<label for="u">Uživatelské jméno</label><input id="u" type="text" autocomplete="off" value="">
+<label for="p">Heslo</label><input id="p" type="password" autocomplete="off" value="">
 <div class="chk"><input id="r" type="checkbox"><label for="r" style="margin:0">Přihlásit se trvale</label></div>
 <button type="submit">Přihlásit se</button>
+<p id="err" style="color:#b4341f;margin-top:10px;display:none">Nesprávné jméno nebo heslo (ukázka: admin / admin).</p>
 </form>
+<script>
+document.getElementById('lf').addEventListener('submit',function(e){
+  e.preventDefault();
+  var u=document.getElementById('u').value.trim().toLowerCase();
+  var p=document.getElementById('p').value.trim();
+  if(u==='admin'&&p==='admin'){location.href='vybor/start.html';}
+  else{document.getElementById('err').style.display='block';}
+});
+</script>
       </div>
       
     </div></main>
